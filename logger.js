@@ -1,11 +1,15 @@
 function subLog (){
+    var node = document.createElement("li");   
     let logBox = document.getElementById("logBox")
     let subMessage = document.createTextNode("You Clicked The submitButton")
-    logBox.appendChild(subMessage)
+    node.appendChild(subMessage)
+    logBox.appendChild(node)
 }
 
 function hrefLog (innerHTML){
+    var node = document.createElement("li");   
     let logBox = document.getElementById("logBox")
     let hrefMessage = document.createTextNode("You Clicked" + innerHTML)
-    logBox.appendChild(hrefMessage)
+    node.appendChild(hrefMessage)
+    logBox.appendChild(node)
 }
