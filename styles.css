@@ -1,0 +1,44 @@
+body {
+        font-family: sans-serif;
+      }
+      
+      .container {
+        display: inline-flex;
+      }
+      
+      #showImport {
+        height: 100px;
+        width: 100px;
+        margin: 5px;
+        cursor: pointer;
+      }
+      
+      #file-upload-button {
+        height: 100px;
+        width: 100px;
+        margin: 5px;
+        cursor: pointer;
+      }
+      
+      #upload {
+        height: 100px;
+        width: 100px;
+        margin: 5px;
+        cursor: pointer;
+      }
+      
+      #submitButton {
+        height: 100px;
+        width: 100px;
+        margin: 5px;
+        cursor: pointer;
+      }
+      
+      button:active {
+        background-color: red;
+      }
+      
+      a:active {
+        background-color: yellow;
+      }
+      
