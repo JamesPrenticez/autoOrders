@@ -22,5 +22,23 @@ function compareArrays() {
   } else console.log("not working")
 }
 
+// ---------- Click Submit Button  ---------- 
+let sub = document.querySelectorAll("#submitButton");
+
+function clickSubmit(){
+  sub.forEach(btn => btn.click())
+}
+
+// ---------- Click csv in Arr2 if found----------
+function clickStuff() {
+  createArr2()
+  let found = arr1.some((r) => arr2.indexOf(r) >= 0);
+    if (found === true) {
+      a.forEach(btn => btn.click())
+    } else console.log("not working")
+}
+
+
+
 
 

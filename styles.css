@@ -41,4 +41,26 @@ body {
       a:active {
         background-color: yellow;
       }
+
+      #right{
+        border: solid royalblue 2px;
+        height: 60vh;
+        width: 45vw;
+        float: right;
+      }
+
+      #left{
+        border: solid royalblue 2px;
+        height: 60vh;
+        width: 45vw;
+        float: left;
+      }
+
+      #bottom{
+        border: solid royalblue 2px;
+        height: 5vh;
+        width: 100vw;
+        position:absolute;
+        bottom:20vh;
+      }
       

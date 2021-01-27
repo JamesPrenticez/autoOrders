@@ -9,26 +9,38 @@
 <body>
 
     <h1>Automatic Orders</h1>
-    <div class="container">
-        <button id="showImport">showImport</button>
-        <button id="file-upload-button">file-upload-button</button>
-        <button id="upload">upload</button>
-        <button id="submitButton">submitButton</button>
+    <div id="left">
+        <div class="container">
+            <button id="showImport">showImport</button>
+            <button id="file-upload-button">file-upload-button</button>
+            <button id="upload">upload</button>
+            <button id="submitButton" onclick="subLog()">submitButton</button>
+        </div>
+        <ul>
+            <li><a href="#" onclick="hrefLog('Actual List')">Actual List</a></li>
+            <li><a href="#" onclick="hrefLog('030.csv')">030.csv</a></li>
+            <li><a href="#" onclick="hrefLog('070.csv')">070.csv</a></li>
+            <li><a href="#" onclick="hrefLog('080.csv')">080.csv</a></li>
+        </ul>
+        </div>
     </div>
-    <ul>
-        <li><a href="#">Actual List</a></li>
-        <li><a href="#">030.csv</a></li>
-        <li><a href="#">070.csv</a></li>
-        <li><a href="#">080.csv</a></li>
-    </ul>
 
-    <button id="test" onclick="console.log(arr1)">log arr1</button>
-    <button id="test" onclick="createArr2()">log arr2</button>
-    <button id="test" onclick="compareArrays()">compareArrays</button>
-
+    <div id="right">
+        <div id="logBox">
+        </div>
     </div>
+
+    <div id="bottom">
+        <button id="test" onclick="console.log(arr1)">log arr1</button>
+        <button id="test" onclick="createArr2()">log arr2</button>
+        <button id="test" onclick="compareArrays()">compareArrays</button>
+        <button id="test" onclick="clickSubmit()">clickSubmit</button>
+        <button id="test" onclick="clickStuff()">clickStuff</button>
+    </div>
+
 
 </body>
 <script src="script.js"></script>
+<script src="logger.js"></script>
 
 </html>
