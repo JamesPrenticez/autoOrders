@@ -18,26 +18,41 @@
 // We are interested in the uploadpo iframe
 // We are checking to see that outterframe contains TWO inner frames
 // If it does we then want to check if the upload button has been clicked
-window.setInterval(function() {
-    let outterFrame = document.querySelectorAll("frame")
-    console.log(outterFrame)
+let myTimer = setInterval(waitandConfirm, 6000)
 
-    let number = outterFrame[1].contentWindow.document.querySelectorAll("frame").length
-    console.log(number)
+function waitandConfirm() {
+       let outterFrame = document.querySelectorAll("frame")
+       let number = outterFrame[1].contentWindow.document.querySelectorAll("frame").length
 
-    if (number === 2){
-            console.log(outterFrame)
-            console.log(number)
+       if (number === 2){
+               let innerFrame = outterFrame[1].contentWindow.document.querySelectorAll("frame")
+               let up = innerFrame[1].contentWindow.document.querySelectorAll("input#upload")
+               console.log(innerFrame[1])
+               console.log(up)
 
-            let innerFrame = outterFrame[1].contentWindow.document.querySelectorAll("frame")
-            let up = innerFrame[1].contentWindow.document.querySelectorAll("input#upload")
-            console.log(innerFrame[1])
-            console.log(up)
-        } else {
-            setTimeout(function() {
-                    console.log("retry...element does not exsist yet")//retry
-            }, 2000)
-        }
+               up[0].addEventListener('click', function (event) {
+                   let isClicked = 0
+                   isClicked++
+                   console.log('You clicked on the upload button');
+                   if(isClicked > 0){
+                       Clicker()
+                       stopTimer()
+                   }
+               });
+           } else {
+            	console.log("retry...element does not exsist yet")//retry
+           }
+        return
+}
+
+function stopTimer(){
+    clearInterval(myTimer)
+}
+
+function Clicker() {
+     console.log("Spam Clicker commence")
+  return
+}
 
      //         if (iframe[0].name === "uploadPO"){
      //         let uploadPOFrame = document.getElementById("uploadPO")
@@ -46,7 +61,7 @@ window.setInterval(function() {
      //         //up[0].click()
      //     } else console.log("No")
      return
- }, 6000);
+ }
 
 
 //          up.addEventListener('click', function (event) {
