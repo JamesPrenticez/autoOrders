@@ -8,49 +8,46 @@
 // @include       http://203.97.77.77/IBPMWeb/AcordeProcessForms/po/default.asp
 
 // ==/UserScript==
-
-// ---------- Welcome Message ----------
-// window.setTimeout(function() { alert('Hello world!') }, 6000);
-
-
-// ---------- Identify Upload has occured ----------
-// This is a multi layered iframe situation the outter iframe we are interested in is addPO. Inside the outter frame is TWO inner frames.
-// We are interested in the uploadpo iframe
-// We are checking to see that outterframe contains TWO inner frames
-// If it does we then want to check if the upload button has been clicked
-let myTimer = setTimeout(waitandConfirm, 6000)
-let counter = -1
-
-function waitandConfirm() {
  //---------------------------------------------------------------------------------------
-    let outterFrame = document.querySelectorAll("frame")
-    let number = outterFrame[1].contentWindow.document.querySelectorAll("frame").length //checks if outter frame exsists
-    let innerFrame = outterFrame[1].contentWindow.document.querySelectorAll("frame")
-    let up = innerFrame[1].contentWindow.document.querySelectorAll("input#upload") //upload button
-//---------------------------------------------------------------------------------------
-    if(number === 2){
-        up[0].addEventListener('click', function (event) {
-            setInterval(function(){
-                    let a = innerFrame[1].contentWindow.document.querySelectorAll("a"), i;
-                    let sub = innerFrame[0].contentWindow.document.querySelectorAll("button#submitButton")
-                    let tracker = innerFrame[0].contentWindow.document.querySelectorAll("button#submitButton").length
-
-                    var filtered = Array.prototype.filter.call(a, function(item){
-                        return /csv/gi.exec(item.innerHTML)
-                    })
-
-                    if (tracker === 0){
-                            counter += 1
-                            console.log(filtered[counter])
-                            filtered[counter].click()
-                        } else if (tracker === 1) {
-                        console.log(sub)//click sub
-                            sub[0].click()
-                    }
-
-            }, 3000);
-        });
-
-    } else if (number != 2) console.log("retry...element does not exsist yet number value = " + number)
-    return
-}
+ let myTimer = setTimeout(waitandConfirm, 6000)
+ let counter = -1
+ //---------------------------------------------------------------------------------------
+ function waitandConfirm() {
+  //---------------------------------------------------------------------------------------
+     let outterFrame = document.querySelectorAll("frame")
+     let number = outterFrame[1].contentWindow.document.querySelectorAll("frame").length //checks if outter frame exsists
+     let innerFrame = outterFrame[1].contentWindow.document.querySelectorAll("frame")
+     let up = innerFrame[1].contentWindow.document.querySelectorAll("input#upload") //upload button
+ //---------------------------------------------------------------------------------------
+     if(number === 2){
+         up[0].addEventListener('click', function (event) {
+         console.log("upload button")
+             setInterval(function(){
+                     let a = innerFrame[1].contentWindow.document.querySelectorAll("a"), i;
+                     let sub = innerFrame[0].contentWindow.document.querySelectorAll("button#submitButton")
+                     let con = innerFrame[0].contentWindow.document.querySelectorAll("button") //Confirm Submit to Workflow
+                     let tracker = innerFrame[0].contentWindow.document.querySelectorAll("button#submitButton").length
+ 
+                     var filtered = Array.prototype.filter.call(a, function(item){
+                         return /csv/gi.exec(item.innerHTML)
+                     })
+ 
+                     if (tracker === 0){
+                             console.log(filtered[0])
+                             filtered[0].click()
+                         } else if (tracker === 1) {
+                             console.log(sub)
+                             sub[0].click()
+ 
+                             if (con.length > 7){ //When Node list is more then 7 the confirm button is always index 0
+                             console.log(con[0])
+                             con[0].click()
+                             }
+                     }
+ 
+             }, 2000);
+         });
+ 
+     } else if (number != 2) console.log("too slow retry...")
+     return
+ }
